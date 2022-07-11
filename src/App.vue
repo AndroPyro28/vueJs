@@ -1,19 +1,10 @@
 <template>
-  <!-- <h2 v-for="(name, index) in names" :key="index" >{{index}} {{name}}</h2> iterating in array of string -->
-
-  <!-- <h2 v-for="(name, index) in fullnames" :key="index" >{{name.first}} {{name.last}}</h2>  iterating in array of objects --> 
-
-  <!-- <div v-for="(actor, index) in actors" :key="index" >
-    <h2> {{index + 1}}. {{actor.name}} </h2>
-    <h2 v-for="(movie, index) in actor.movies" :key="index" > * {{movie}}</h2> iterating in array of objects with array props
-  </div> -->
-
-  <!-- <h2 v-for="(value, key, index) in myInfo" :key="index">{{key}} {{value}}</h2>  iterating with object with key and values -->
-
-  <template  v-for="(name, index) in names" :key="index"  >  
-    <h2 v-show="name === 'andro'">{{index}} {{name}}</h2>
-  </template>
   
+  <h2>{{ 2 + 3 + 5  }}</h2>
+  <h2>{{ 5 + 10 + 15  }}</h2>
+  <h2>add method {{add(2,3,5)}}</h2>
+  <h2>add method {{add(10,5,15)}}</h2>
+  <h2>multiply method {{ multiply(baseValue) }}</h2>
 </template>
 
 <script>
@@ -21,41 +12,17 @@ export default {
   name: "App",
   data() {
     return {
-     names: ['andro', 'jean', 'john' ],
-     fullnames: [
-      {
-        first: 'andro', last: 'eugenio'
-      },
-      {
-        first: 'jean', last: 'correa'
-      },
-      {
-        first: 'john', last: 'doe'
-      },
-     ],
-     actors: [
-      {
-        name: 'andro eugenio',
-        movies: ['ang provinsyano', 'john wick']
-      },
-      {
-        name: 'jean correa',
-        movies: ['once upon a time', 'horror']
-      },
-      {
-        name: 'john doe',
-        movies: ['hotdog', '007']
-      },
-     ],
-     myInfo: {
-      name: "andro",
-      channel: 'androPyro',
-      course: 'vue 3'
-     }
+      baseMultiplier: 5,
+      baseValue: 2
     };
   },
   methods: {
-    
+    add(a,b,c) {
+      return a + b + c;
+    },
+    multiply (num) {
+      return num * this.baseMultiplier
+    }
   }
 };
 </script>
