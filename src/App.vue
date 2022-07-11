@@ -1,10 +1,70 @@
 <template>
-  <h2>{{name}}</h2>
-    <button @click="changeName($event, 'jean')" draggable="true"  >Change name</button>
-      <h2>{{count}}</h2>
-    <button @click="setCount('incremeant')"> + </button>
-  <button @click="setCount('decremeant')"> -</button>
-  <button @click="setCount('decremeant')"> -</button>
+  <form action="" @submit="submitForm">
+    <div>
+      <pre>
+        {{JSON.stringify(formValues, null, 2)}}
+      </pre>
+    </div>
+    
+    <div>
+      <label for="name">name</label>
+      <input type="text"  id="name" v-model="formValues.name">
+    </div>
+
+    <div>
+      <label for="profile">Profile Summary</label>
+      <textarea type="text"  id="profile" v-model="formValues.profileSummary" />
+    </div>
+
+    <div>
+      <label for="country">country</label>
+      <select v-model="formValues.country">
+        <option>Select a country</option>
+        <option value="Philippines">Philippines</option>
+        <option value="Japan">Japan</option>
+        <option value="China">China</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="jobLocation">job location</label>
+      <select v-model="formValues.jobLocation" multiple>
+        <option value="Philippines">Philippines</option>
+        <option value="Japan">Japan</option>
+        <option value="China">China</option>
+      </select>
+    </div>
+
+    <div>
+      <input type="checkbox" name="" id="remoteWork" v-model="formValues.remoteWork" true-value="yes"  false-value="no" />
+      <label for="remoteWork">Open to remote work?</label>
+    </div>
+
+      <div>
+        <input type="checkbox" name="" id="html" value="html" v-model="formValues.skillSets"/>
+        <label for="html">Html</label>
+
+        <input type="checkbox" name="" id="javascript" value="javascript" v-model="formValues.skillSets"/>
+        <label for="javascript">javascript</label>
+
+        <input type="checkbox" name="" id="Css" value="Css" v-model="formValues.skillSets"/>
+        <label for="Css">Css</label>
+      </div>
+
+      <div>
+        <input type="radio" name="" id="0-2" value="0-2" v-model="formValues.yearsOfExperience"/>
+        <label for="0-2">0-2</label>
+
+        <input type="radio" name="" id="3-5" value="3-5" v-model="formValues.yearsOfExperience"/>
+        <label for="3-5">3-5</label>
+
+        <input type="radio" name="" id="6+" value="6+" v-model="formValues.yearsOfExperience"/>
+        <label for="6+">6+</label>
+      </div>
+
+      <button type="submit">submit</button>
+
+  </form>
 </template>
 
 <script>
@@ -12,21 +72,26 @@ export default {
   name: "App",
   data() {
     return {
-      name: 'andro',
-      count: 0
-    };
+      formValues: {
+        name: '',
+        profileSummary: '',
+        country: '',
+        jobLocation: [],
+        remoteWork: 'no',
+        skillSets: [],
+        yearsOfExperience: ''
+      }
+    }
   },
   methods: {
-    changeName (event, nameparams) {
-      console.log(event)
-      this.name = nameparams
+    displayName () {
+      alert(this.name)
     },
-    setCount (action, number=1) {
-      if(action == "incremeant") return this.count += number;
-      if(action == "decremeant") return this.count -= number;
+    submitForm (e) {
+      e.preventDefault();
 
-      return this.count;
-    },
+      console.log('form values', this.formValues)
+    }
   }
 };
 </script>
@@ -36,8 +101,10 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
 </style>
