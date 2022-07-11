@@ -1,10 +1,10 @@
 <template>
-  
-  <h2>{{ 2 + 3 + 5  }}</h2>
-  <h2>{{ 5 + 10 + 15  }}</h2>
-  <h2>add method {{add(2,3,5)}}</h2>
-  <h2>add method {{add(10,5,15)}}</h2>
-  <h2>multiply method {{ multiply(baseValue) }}</h2>
+  <h2>{{name}}</h2>
+    <button @click="changeName($event, 'jean')" draggable="true"  >Change name</button>
+      <h2>{{count}}</h2>
+    <button @click="setCount('incremeant')"> + </button>
+  <button @click="setCount('decremeant')"> -</button>
+  <button @click="setCount('decremeant')"> -</button>
 </template>
 
 <script>
@@ -12,17 +12,21 @@ export default {
   name: "App",
   data() {
     return {
-      baseMultiplier: 5,
-      baseValue: 2
+      name: 'andro',
+      count: 0
     };
   },
   methods: {
-    add(a,b,c) {
-      return a + b + c;
+    changeName (event, nameparams) {
+      console.log(event)
+      this.name = nameparams
     },
-    multiply (num) {
-      return num * this.baseMultiplier
-    }
+    setCount (action, number=1) {
+      if(action == "incremeant") return this.count += number;
+      if(action == "decremeant") return this.count -= number;
+
+      return this.count;
+    },
   }
 };
 </script>
