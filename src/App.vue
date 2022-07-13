@@ -3,7 +3,7 @@
 <Greet name="Jean" title="Police" />
 <Greet name="John" title="Analyst" />
 <Greet :name="name" :title="channel" /> -->
-<Article :title="'Article Title'" :likes="50" :isPublished="false" />
+<Article :title="'Article Title'" :likes="50" :isPublished="false" id="myId" />
 </template>
 
 <script>
