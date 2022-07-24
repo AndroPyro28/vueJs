@@ -1,29 +1,27 @@
 <template>
-  
-  <h3> {{name}} </h3>
+    <button @click="toggleModal = true">Open Modal</button>
 
-  <ComponentB />
-  
+    <Modal v-show="toggleModal" @closeModal="modalToggle"/>
 </template>
 
 <script>
-import ComponentB from './components/ComponentB.vue'
+import Modal from './components/Modal.vue'
 export default {
   name: 'App',
   components: {
-    ComponentB
+    Modal
   },
   data() {
     return {
-      name: 'Vishwas'
+      toggleModal: false
     }
   },
-  provide() {
-    return {
-      username: this.name
+    methods: {
+      modalToggle (name) {
+        console.log(name)
+        this.toggleModal = false;
+      }
     }
-  },
-    
 }
 </script>
 
