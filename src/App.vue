@@ -1,28 +1,21 @@
 <template>
-    <button @click="toggleModal = true">Open Modal</button>
-
-    <Modal v-show="toggleModal" @closeModal="modalToggle"/>
+  <Input v-model="name" />
 </template>
 
 <script>
-import Modal from './components/Modal.vue'
+import Input from "./components/Input.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Modal
+    Input,
   },
   data() {
     return {
-      toggleModal: false
-    }
+      name: "",
+    };
   },
-    methods: {
-      modalToggle (name) {
-        console.log(name)
-        this.toggleModal = false;
-      }
-    }
-}
+  methods: {},
+};
 </script>
 
 <style>
